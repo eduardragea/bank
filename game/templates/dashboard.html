@@ -1,0 +1,31 @@
+{% extends 'base_content.html' %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
+        <tr>
+          <td><h1>Banks</h1></td>
+          <td class="align-middle">
+            <span class="float-end">
+              <a href="{% url 'new_bank' %}" class="btn btn-primary">Create Bank</a>
+            </span>
+          </td>
+        </tr>
+        {% for bank in banks %}
+          <tr>
+            <td class="align-middle">
+              <b>{{ bank.name }}</b>
+            </td>
+            <td class="align-middle">
+              <span class="float-end">
+                <b>{{ bank.fullName }}</b>
+              </span>
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
