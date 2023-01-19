@@ -16,7 +16,13 @@ def home(request):
 @login_required
 def dashboard(request):
     banks = BankModel.objects.all()
-    return render(request, 'dashboard.html', {'banks': banks})
+    user = request.user
+    bank = None
+    for b in banks:
+        if b.owner == user:
+            bank = b
+            break
+    return render(request, 'dashboard.html', {'banks': banks, 'current_user': user, 'bank': bank})
 
 @login_required
 def new_bank(request):

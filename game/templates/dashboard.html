@@ -1,32 +1,488 @@
 {% extends 'base_content.html' %}
 {% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <table class="table">
-        <tr>
-          <td><h1>Banks</h1></td>
-          <td class="align-middle">
-            <span class="float-end">
-              <a href="{% url 'new_bank' %}" class="btn btn-primary">Create Bank</a>
-              <a class="dropdown-item" href="{% url 'log_out' %}">Log out</a>
-            </span>
-          </td>
-        </tr>
-        {% for bank in banks %}
+<div class="split lefttt">
+  <div class="row h-100">
+  <div class="col-sm-12 my-auto">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <table class="table">
           <tr>
-            <td class="align-middle">
-              <b>{{ bank.name }}</b>
-            </td>
+            <td><h1>Banks</h1></td>
             <td class="align-middle">
               <span class="float-end">
-                <b>{{ bank.fullName }}</b>
+                <a href="{% url 'new_bank' %}" class="btn btn-primary">Create Bank</a>
+                <a class="dropdown-item" href="{% url 'log_out' %}">Log out</a>
               </span>
             </td>
           </tr>
-        {% endfor %}
-      </table>
+          {% for bank in banks %}
+            <tr>
+              <td class="align-middle">
+                <b>{{ bank.name }}</b>
+              </td>
+              <td class="align-middle">
+                <span class="float-end">
+                  <b>{{ bank.fullName }}</b>
+                </span>
+              </td>
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
     </div>
   </div>
+  </div>
+</div>
+</div>
+<div class="split right">
+  {% if bank != None %}
+    <table>
+      <thead>
+        <th>Banking Wars</th>
+        <th colspan="2">Year 0</th>
+        <th colspan="2">Year 1</th>
+          <span class="float-end">
+            <a href="{% url 'new_bank' %}" class="btn btn-primary">Next Year</a>
+          </span>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bank Name</td>
+          <td>Assets</td>
+          <td>Liabilities</td>
+          <td>Assets</td>
+          <td>Liabilities</td>
+        </tr>
+        <tr>
+          <td>Required reserves</td>
+          <td>9.0</td>
+          <td></td>
+          <td>0.0</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Free reserves</td>
+          <td>81.0</td>
+          <td></td>
+          <td>90.0</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Required Capital</td>
+          <td></td>
+          <td>5.0</td>
+          <td></td>
+          <td>5.0</td>
+        </tr>
+        <tr>
+          <td>Free capital</td>
+          <td></td>
+          <td>5.0</td>
+          <td></td>
+          <td>5.0</td>
+        </tr>
+        <tr>
+         <td colspan="3"><p style="text-align:justify">The environment you are in:</p></td>
+        </tr>
+        <tr>
+          <th>Assets available</th>
+          <th>Cost</th>
+          <th>Return</th>
+          <th>Cost</th>
+          <th>Return</th>
+        </tr>
+        <tr>
+          <td>Cash reserves</td>
+        </tr>
+        <tr>
+          <td>- Return</td>
+          <td>1.00%</td>
+          <td></td>
+          <td>1.00%</td>
+        </tr>
+        <tr>
+          <td>- Risk weighting</td>
+          <td>0.00%</td>
+          <td></td>
+          <td>0.00%</td>
+        </tr>
+        <tr>
+          <td>- Loss provisions</td>
+          <td>0.00%</td>
+          <td></td>
+          <td>0.00%</td>
+        </tr>
+        <tr>
+          <td>Interbank loans</td>
+        </tr>
+        <tr>
+          <td>- Return</td>
+          <td>2.00%</td>
+          <td></td>
+          <td>2.00%</td>
+        </tr>
+        <tr>
+          <td>- Risk weighting</td>
+          <td>10.00%</td>
+          <td></td>
+          <td>10.00%</td>
+        </tr>
+        <tr>
+          <td>- Loss provisions</td>
+          <td>0.00%</td>
+          <td></td>
+          <td>0.00%</td>
+        </tr>
+        <tr>
+          <td>Mortgages</td>
+        </tr>
+        <tr>
+          <td>- Return</td>
+          <td>5.00%</td>
+          <td></td>
+          <td>5.00%</td>
+        </tr>
+        <tr>
+          <td>- Risk weighting</td>
+          <td>75.00%</td>
+          <td></td>
+          <td>75.00%</td>
+        </tr>
+        <tr>
+          <td>- Loss provisions</td>
+          <td>1.00%</td>
+          <td></td>
+          <td>1.00%</td>
+        </tr>
+        <tr>
+          <td>Non-financial assets</td>
+        </tr>
+        <tr>
+          <td>- Return</td>
+          <td>0.00%</td>
+          <td></td>
+          <td>0.00%</td>
+        </tr>
+        <tr>
+          <td>- Risk weighting</td>
+          <td>0.00%</td>
+          <td></td>
+          <td>0.00%</td>
+        </tr>
+        <tr>
+          <td>- Loss provisions</td>
+          <td>0.00%</td>
+          <td></td>
+          <td>0.00%</td>
+        </tr>
+        <tr>
+          <th>Liabilities available</th>
+        </tr>
+        <tr>
+          <td>Deposits</td>
+        </tr>
+        <tr>
+          <td>- Cost</td>
+          <td></td>
+          <td>1.00%</td>
+          <td></td>
+          <td>1.00%</td>
+        </tr>
+        <tr>
+          <td>Interbank</td>
+        </tr>
+        <tr>
+          <td>- Cost</td>
+          <td></td>
+          <td>2.00%</td>
+          <td></td>
+          <td>2.00%</td>
+        </tr>
+        <tr>
+          <td>Shareholders' equity capital</td>
+        </tr>
+        <tr>
+          <td>- Cost</td>
+          <td></td>
+          <td>15.00%</td>
+          <td></td>
+          <td>15.00%</td>
+        </tr>
+        <tr>
+          <th>Conditions:</th>
+        </tr>
+        <tr>
+          <td>Required capital/assets</td>
+        </tr>
+        <tr>
+          <td>- Total assets %</td>
+          <td>5.00%</td>
+          <td></td>
+          <td>5.00%</td>
+        </tr>
+        <tr>
+          <td>- Risk weighted assets %</td>
+          <td>5.00%</td>
+          <td></td>
+          <td>5.00%</td>
+        </tr>
+        <tr>
+          <td>Required cash reserves/deposits %</td>
+          <td>10.00%</td>
+          <td></td>
+          <td>10.00%</td>
+        </tr>
+        <tr>
+          <td>Required cash reserves/interbank %</td>
+          <td>5.00%</td>
+          <td></td>
+          <td>5.00%</td>
+        </tr>
+        <tr>
+          <td>Other income/expenses</td>
+        </tr>
+        <tr>
+          <td>Fee income/assets</td>
+          <td>1.50%</td>
+          <td></td>
+          <td>1.50%</td>
+        </tr>
+        <tr>
+          <td>Operating expanses/assets</td>
+          <td>1.30%</td>
+          <td></td>
+          <td>1.30%</td>
+        </tr>
+        <tr>
+          <td>Tax rate on profits</td>
+          <td>25.00%</td>
+          <td></td>
+          <td>25.00%</td>
+        </tr>
+        <tr>
+          <th>Bank Name</th>
+          <th colspan="2">Year 0</th>
+          <th colspan="2">Year 1</th>
+        </tr>
+        <tr>
+          <th>Balance Sheet</th>
+          <th>Assets</th>
+          <th>Liabilities</th>
+          <th>Assets</th>
+          <th>Liabilities</th>
+        </tr>
+        <tr>
+          <td>Cash reserves</td>
+          <td>90.0</td>
+          <td></td>
+          <td>90.0</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Interbank loans</td>
+          <td>0.0</td>
+          <td></td>
+          <td>0.0</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Mortgages</td>
+          <td>0.0</td>
+          <td></td>
+          <td>0.0</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Non-financial assets</td>
+          <td>10.0</td>
+          <td></td>
+          <td>10.0</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td>100.0</td>
+          <td></td>
+          <td>100.0</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>Minimum required reserves</th>
+          <td>9.0</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>Excess/free reserves</th>
+          <td>81.0</td>
+          <td></td>
+          <td>90.0</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Deposits</td>
+          <td></td>
+          <td>90.0</td>
+          <td></td>
+          <td>90.0</td>
+        </tr>
+        <tr>
+          <td>Interbank loans</td>
+          <td></td>
+          <td>0.0</td>
+          <td></td>
+          <td>0.0</td>
+        </tr>
+        <tr>
+          <td>Capital</td>
+        </tr>
+        <tr>
+          <td>Initial endowment</td>
+          <td>10.0</td>
+        </tr>
+        <tr>
+          <td>Start of year</td>
+          <td></td>
+          <td>10.0</td>
+          <td></td>
+          <td>10.0</td>
+        </tr>
+        <tr>
+          <td>End of year</td>
+          <td></td>
+          <td>10.0</td>
+          <td></td>
+          <td>10.2</td>
+        </tr>
+        <tr>
+          <td>Shareholders</td>
+          <td></td>
+          <td>10.0</td>
+          <td></td>
+          <td>10.2</td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td></td>
+          <td>100.0</td>
+          <td></td>
+          <td>100.0</td>
+        </tr>
+        <tr>
+          <th>Minimum required capital - start of year</th>
+          <td></td>
+          <td>5.0</td>
+          <td></td>
+          <td>5.0</td>
+        </tr>
+        <tr>
+          <th>Excess/free capital</th>
+          <td></td>
+          <td>5.0</td>
+          <td></td>
+          <td>5.0</td>
+        </tr>
+        <tr>
+          <td>Loans/deposits</td>
+          <td></td>
+          <td>0.00%</td>
+          <td></td>
+          <td>0.00%</td>
+        </tr>
+        <tr>
+          <th>Bank Name</th>
+          <th colspan="2">Year 0</th>
+          <th colspan="2">Year 1</th>
+        </tr>
+        <tr>
+          <th>Income statement</th>
+        </tr>
+        <tr>
+          <td>Interest income</td>
+          <td>0.9</td>
+          <td></td>
+          <td>0.9</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Interest expense</td>
+          <td>0.9</td>
+          <td></td>
+          <td>0.9</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Net interest income</td>
+          <td>0.0</td>
+          <td></td>
+          <td>0.0</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>NIM</td>
+          <td>0.00%</td>
+          <td></td>
+          <td>0.00%</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Fee income</td>
+          <td>1.5</td>
+          <td></td>
+          <td>1.5</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Operating expenses</td>
+          <td>1.3</td>
+          <td></td>
+          <td>1.3</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Loan loss provision</td>
+          <td>0.0</td>
+          <td></td>
+          <td>0.0</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Other income/(expense)</td>
+          <td>0.0</td>
+          <td></td>
+          <td>0.0</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Operating income</td>
+          <td>0.2</td>
+          <td></td>
+          <td>0.2</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Corporation tax</td>
+          <td>0.1</td>
+          <td></td>
+          <td>0.1</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Net income</td>
+          <td>0.2</td>
+          <td></td>
+          <td>0.2</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  {% else %}
+    <div class="row h-100 container text-center">
+      <div class="col-sm-12 my-auto">Please create a bank to start the game
+      </div>
+    </div>
+  {% endif %}
 </div>
 {% endblock %}
