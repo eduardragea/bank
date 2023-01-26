@@ -40,35 +40,47 @@
         // console.log(secondCells)
         //$('#D4').html($('#D81') != "" ? $('#D81') : 0.0);
         var b79 = parseFloat($('#B75').html()) + parseFloat($('#B78').html());
-        if(b79%1==0)
-        $('#B79').html(b79+'.0');
-        else $('#B79').html(b79);
+        // if(b79%1==0)
+        // $('#B79').html(b79+'.0');
+        // else
+        $('#B79').html(b79.toFixed(1));
 
         var d79 = parseFloat($('#D75').html()) + parseFloat($('#D78').html());
-        if(d79%1==0)
-        $('#D79').html(d79+'.0');
-        else $('#D79').html(d79);
+        // if(d79%1==0)
+        // $('#D79').html(d79+'.0');
+        // else
+        $('#D79').html(d79.toFixed(1));
 
         var b81 = (parseFloat($('#C84').html()) * parseFloat($('#B64').html().slice(0,-1)) + parseFloat($('#C85').html()) * parseFloat($('#B65').html().slice(0,-1)))/100;
-        if(b81%1==0)
-        $('#B81').html(b81+'.0');
-        else $('#B81').html(b81);
+        // if(b81%1==0)
+        // $('#B81').html(b81+'.0');
+        // else
+        $('#B81').html(b81.toFixed(1));
 
         $('#B4').html($('#B81').html());
 
         //do the same for D81???
+        var d81 = (parseFloat($('#E84').html()) * parseFloat($('#D64').html().slice(0,-1)) + parseFloat($('#E85').html()) * parseFloat($('#D65').html().slice(0,-1)))/100;
+        // if(d81%1==0)
+        // $('#D81').html(d81+'.0');
+        // else
+        $('#D81').html(d81.toFixed(1));
+
+        $('#D4').html($('#D81').html());
 
         var b82 = parseFloat($('#B75').html()) - parseFloat($('#B81').html());
-        if(b82%1==0)
-        $('#B82').html(b82+'.0');
-        else $('#B82').html(b82);
+        // if(b82%1==0)
+        // $('#B82').html(b82+'.0');
+        // else
+        $('#B82').html(b82.toFixed(1));
 
         $('#B5').html($('#B82').html());
 
         var d75 = parseFloat($('#B75').html()) + parseFloat($('#B111').html());
-        if(d75%1==0)
-        $('#D75').html(d75+'.0');
-        else $('#D75').html(d75);
+        // if(d75%1==0)
+        // $('#D75').html(d75+'.0');
+        // else
+        $('#D75').html(d75.toFixed(1));
 
         $('#D76').html($('#B76').html());
         $('#D77').html($('#B77').html());
@@ -76,57 +88,57 @@
 
         //same here D81 doesn t exist what doe we do???
         var d82 = parseFloat($('#D75').html()) - parseFloat($('#D81').html());
-        if(d82%1==0)
-        $('#D82').html(d82+'.0');
-        else $('#D82').html(d82);
+        // if(d82%1==0)
+        // $('#D82').html(d82+'.0');
+        // else
+        $('#D82').html(d82.toFixed(1));
 
         $('#D5').html($('#D82').html());
         $('#E88').html($('#C89').html());
 
-        var e89 = parseFloat($('#E88').html()) + parseFloat($('#D111').html());
-        if(e89%1==0)
-        $('#E89').html(e89+'.0');
-        else $('#E89').html(e89);
-
-        $('#E90').html($('#E89').html());
-
         var e91 = parseFloat($('#E88').html()) + parseFloat($('#E85').html()) + parseFloat($('#E84').html());
-        if(e91%1==0)
-        $('#E91').html(e91+'.0');
-        else $('#E91').html(e91);
+        // if(e91%1==0)
+        // $('#E91').html(e91+'.0');
+        // else
+        $('#E91').html(e91.toFixed(1));
 
         var c91 = parseFloat($('#C88').html()) + parseFloat($('#C85').html()) + parseFloat($('#C84').html());
-        if(c91%1==0)
-        $('#C91').html(c91+'.0');
-        else $('#C91').html(c91);
+        // if(c91%1==0)
+        // $('#C91').html(c91+'.0');
+        // else
+        $('#C91').html(c91.toFixed(1));
 
         var a=parseFloat($('#B79').html()) * parseFloat($('#B61').html().slice(0,-1)),
         b=parseFloat($('#B75').html()) * parseFloat($('#B31').html().slice(0,-1)),
         c=parseFloat($('#B76').html()) * parseFloat($('#B36').html().slice(0,-1)),
         d=parseFloat($('#B77').html()) * parseFloat($('#B41').html().slice(0,-1));
         var c93 =(a + (b + c + d)/100*parseFloat($('#B62').html().slice(0,-1)))/100;
-        if(c93%1==0)
-        $('#C93').html(c93+'.0');
-        else $('#C93').html(c93);
+        // if(c93%1==0)
+        // $('#C93').html(c93+'.0');
+        // else
+        $('#C93').html(c93.toFixed(1));
 
         var c94 = parseFloat($('#C88').html()) - parseFloat($('#C93').html());
-        if(c94%1==0)
-        $('#C94').html(c94+'.0');
-        else $('#C94').html(c94);
+        // if(c94%1==0)
+        // $('#C94').html(c94+'.0');
+        // else
+        $('#C94').html(c94.toFixed(1));
 
         var x=parseFloat($('#D79').html()) * parseFloat($('#D61').html().slice(0,-1)),
         y=parseFloat($('#D75').html()) * parseFloat($('#D31').html().slice(0,-1)),
         z=parseFloat($('#D76').html()) * parseFloat($('#D36').html().slice(0,-1)),
         t=parseFloat($('#D77').html()) * parseFloat($('#D41').html().slice(0,-1));
         var e93 =(x + (y + z + t)/100*parseFloat($('#D62').html().slice(0,-1)))/100;
-        if(e93%1==0)
-        $('#E93').html(e93+'.0');
-        else $('#E93').html(e93);
+        // if(e93%1==0)
+        // $('#E93').html(e93+'.0');
+        // else
+        $('#E93').html(e93.toFixed(1));
 
         var e94 = parseFloat($('#E88').html()) - parseFloat($('#E93').html());
-        if(e94%1==0)
-        $('#E94').html(e94+'.0');
-        else $('#E94').html(e94);
+        // if(e94%1==0)
+        // $('#E94').html(e94+'.0');
+        // else
+        $('#E94').html(e94.toFixed(1));
 
         $('#C6').html($('#C93').html());
         $('#E6').html($('#E93').html());
@@ -134,151 +146,181 @@
         $('#E7').html($('#E94').html());
 
         var c96 = parseFloat($('#B77').html()) / parseFloat($('#C84').html()) * 100;
-        if(c96%1==0)
-        $('#C96').html(c96+'.00%');
-        else if(c96%0.1==0)
-        $('#C96').html(c96+'0%');
-        else $('#C96').html(c96+'%');
+        // if(c96%1==0)
+        // $('#C96').html(c96+'.00%');
+        // else if(c96%0.1==0)
+        // $('#C96').html(c96+'0%');
+        // else
+        $('#C96').html(c96.toFixed(2)+'%');
 
         var e96 = parseFloat($('#D77').html()) / parseFloat($('#E84').html()) * 100;
-        if(e96%1==0)
-        $('#E96').html(e96+'.00%');
-        else if(e96%0.1==0)
-        $('#E96').html(e96+'0%');
-        else $('#E96').html(e96+'%');
+        // if(e96%1==0)
+        // $('#E96').html(e96+'.00%');
+        // else if(e96%0.1==0)
+        // $('#E96').html(e96+'0%');
+        // else
+        $('#E96').html(e96.toFixed(2)+'%');
 
         var b=parseFloat($('#B75').html()) * parseFloat($('#B30').html().slice(0,-1)),
         c=parseFloat($('#B76').html()) * parseFloat($('#B35').html().slice(0,-1)),
         d=parseFloat($('#B77').html()) * parseFloat($('#B40').html().slice(0,-1));
         var b100 =(b+c+d)/100;
-        if(b100%1==0)
-        $('#B100').html(b100+'.0');
-        else $('#B100').html(b100);
+        // if(b100%1==0)
+        // $('#B100').html(b100+'.0');
+        // else
+        $('#B100').html(b100.toFixed(1));
 
         var b=parseFloat($('#D75').html()) * parseFloat($('#D30').html().slice(0,-1)),
         c=parseFloat($('#D76').html()) * parseFloat($('#D35').html().slice(0,-1)),
         d=parseFloat($('#D77').html()) * parseFloat($('#D40').html().slice(0,-1));
         var d100 =(b+c+d)/100;
-        if(d100%1==0)
-        $('#D100').html(d100+'.0');
-        else $('#D100').html(d100);
+        // if(d100%1==0)
+        // $('#D100').html(d100+'.0');
+        // else
+        $('#D100').html(d100.toFixed(1));
 
         var b=parseFloat($('#C84').html()) * parseFloat($('#C51').html().slice(0,-1)),
         c=parseFloat($('#C85').html()) * parseFloat($('#C54').html().slice(0,-1));
         var b101 =(b+c)/100;
-        if(b101%1==0)
-        $('#B101').html(b101+'.0');
-        else $('#B101').html(b101);
+        // if(b101%1==0)
+        // $('#B101').html(b101+'.0');
+        // else
+        $('#B101').html(b101.toFixed(1));
 
         var b=parseFloat($('#E84').html()) * parseFloat($('#E51').html().slice(0,-1)),
         c=parseFloat($('#E85').html()) * parseFloat($('#E54').html().slice(0,-1));
         var d101 =(b+c)/100;
-        if(d101%1==0)
-        $('#D101').html(d101+'.0');
-        else $('#D101').html(d101);
+        // if(d101%1==0)
+        // $('#D101').html(d101+'.0');
+        // else
+        $('#D101').html(d101.toFixed(1));
 
-        var b102 = parseFloat($('#B100').html()) - parseFloat($('#B101').html());
-        if(b102%1==0)
-        $('#B102').html(b102+'.0');
-        else $('#B102').html(b102);
+        var b102 = (parseFloat($('#B100').html()) - parseFloat($('#B101').html())).toFixed(1);
+        // if(b102%1==0)
+        // $('#B102').html(b102+'.0');
+        // else
+        $('#B102').html(b102);
 
-        var d102 = parseFloat($('#D100').html()) - parseFloat($('#D101').html());
-        if(d102%1==0)
-        $('#D102').html(d102+'.0');
-        else $('#D102').html(d102);
+        var d102 = (parseFloat($('#D100').html()) - parseFloat($('#D101').html())).toFixed(1);
+        // if(d102%1==0)
+        // $('#D102').html(d102+'.0');
+        // else
+        $('#D102').html(d102);
 
-        var b103 = parseFloat($('#B102').html()) / parseFloat($('#B79').html()) * 100;
-        if(b103%1==0)
-        $('#B103').html(b103+'.00%');
-        else if(b103%0.1==0)
-        $('#B103').html(b103+'0%');
-        else $('#B103').html(b103+'%');
+        var b103 = (parseFloat($('#B102').html()) / parseFloat($('#B79').html()) * 100).toFixed(2);
+        // if(b103%1==0)
+        // $('#B103').html(b103+'.00%');
+        // else if(b103%0.1==0)
+        // $('#B103').html(b103+'0%');
+        // else
+        $('#B103').html(b103+'%');
 
-        var d103 = parseFloat($('#B102').html()) / parseFloat($('#B79').html()) * 100;
-        if(d103%1==0)
-        $('#D103').html(d103+'.00%');
-        else if(d103%0.1==0)
-        $('#D103').html(d103+'0%');
-        else $('#D103').html(d103+'%');
+        var d103 = (parseFloat($('#B102').html()) / parseFloat($('#B79').html()) * 100).toFixed(2);
+        // if(d103%1==0)
+        // $('#D103').html(d103+'.00%');
+        // else if(d103%0.1==0)
+        // $('#D103').html(d103+'0%');
+        // else
+        $('#D103').html(d103+'%');
 
-        var b105 = parseFloat($('#B79').html()) * parseFloat($('#B67').html())/100;
-        if(b105%1==0)
-        $('#B105').html(b105+'.0');
-        else $('#B105').html(b105);
+        var b105 = (parseFloat($('#B79').html()) * parseFloat($('#B67').html())/100).toFixed(1);
+        // if(b105%1==0)
+        // $('#B105').html(b105+'.0');
+        // else
+        $('#B105').html(b105);
 
-        var d105 = parseFloat($('#D79').html()) * parseFloat($('#D67').html())/100;
-        if(d105%1==0)
-        $('#D105').html(d105+'.0');
-        else $('#D105').html(d105);
+        var d105 = (parseFloat($('#D79').html()) * parseFloat($('#D67').html())/100).toFixed(1);
+        // if(d105%1==0)
+        // $('#D105').html(d105+'.0');
+        // else
+        $('#D105').html(d105);
 
-        var b106 = parseFloat($('#B79').html()) * parseFloat($('#B69').html())/100;
-        if(b106%1==0)
-        $('#B106').html(b106+'.0');
-        else $('#B106').html(b106);
+        var b106 = (parseFloat($('#B79').html()) * parseFloat($('#B69').html())/100).toFixed(1);
+        // if(b106%1==0)
+        // $('#B106').html(b106+'.0');
+        // else
+        $('#B106').html(b106);
 
-        var d106 = parseFloat($('#D79').html()) * parseFloat($('#D69').html())/100;
-        if(d106%1==0)
-        $('#D106').html(d106+'.0');
-        else $('#D106').html(d106);
+        var d106 = (parseFloat($('#D79').html()) * parseFloat($('#D69').html())/100).toFixed(1);
+        // if(d106%1==0)
+        // $('#D106').html(d106+'.0');
+        // else
+        $('#D106').html(d106);
 
         var b=parseFloat($('#B75').html()) * parseFloat($('#B32').html().slice(0,-1)),
         c=parseFloat($('#B76').html()) * parseFloat($('#B37').html().slice(0,-1)),
         d=parseFloat($('#B77').html()) * parseFloat($('#B42').html().slice(0,-1));
-        var b107 =(b+c+d)/100;
-        if(b107%1==0)
-        $('#B107').html(b107+'.0');
-        else $('#B107').html(b107);
+        var b107 =((b+c+d)/100).toFixed(1);
+        // if(b107%1==0)
+        // $('#B107').html(b107+'.0');
+        // else
+        $('#B107').html(b107);
 
         //Q: How many digits after 0??
 
         var b=parseFloat($('#D75').html()) * parseFloat($('#D32').html().slice(0,-1)),
         c=parseFloat($('#D76').html()) * parseFloat($('#D37').html().slice(0,-1)),
         d=parseFloat($('#D77').html()) * parseFloat($('#D42').html().slice(0,-1));
-        var d107 =(b+c+d)/100;
-        if(d107%1==0)
-        $('#D107').html(d107+'.0');
-        else $('#D107').html(d107);
+        var d107 =((b+c+d)/100).toFixed(1);
+        // if(d107%1==0)
+        // $('#D107').html(d107+'.0');
+        // else
+        $('#D107').html(d107);
 
         var b=parseFloat($('#B102').html()),
         c=parseFloat($('#B105').html()),
         d=parseFloat($('#B106').html()),
         e=parseFloat($('#B107').html()),
         f=parseFloat($('#B108').html());
-        var b109 =b+c-d-e+f;
-        if(b109%1==0)
-        $('#B109').html(b109+'.0');
-        else $('#B109').html(b109);
+        var b109 =(b+c-d-e+f);
+        // if(b109%1==0)
+        // $('#B109').html(b109+'.0');
+        // else
+        $('#B109').html(b109.toFixed(1));
 
         var b=parseFloat($('#D102').html()),
         c=parseFloat($('#D105').html()),
         d=parseFloat($('#D106').html()),
         e=parseFloat($('#D107').html()),
         f=parseFloat($('#D108').html());
-        var d109 =b+c-d-e+f;
-        if(d109%1==0)
-        $('#D109').html(d109+'.0');
-        else $('#D109').html(d109);
+        var d109 =(b+c-d-e+f);
+        // if(d109%1==0)
+        // $('#D109').html(d109+'.0');
+        // else
+        $('#D109').html(d109.toFixed(1));
 
         //Excel doc is considering only one decimal???
-        var b110 = parseFloat($('#B109').html()) * parseFloat($('#B71').html())/100;
-        if(b110%1==0)
-        $('#B110').html(b110+'.0');
-        else $('#B110').html(b110);
+        var b110 = (parseFloat($('#B109').html()) * parseFloat($('#B71').html())/100);
+        // if(b110%1==0)
+        // $('#B110').html(b110+'.0');
+        // else
+        $('#B110').html(b110.toFixed(1));
 
-        var d110 = parseFloat($('#D109').html()) * parseFloat($('#D71').html())/100;
-        if(d110%1==0)
-        $('#D110').html(d110+'.0');
-        else $('#D110').html(d110);
+        var d110 = (parseFloat($('#D109').html()) * parseFloat($('#D71').html())/100);
+        // if(d110%1==0)
+        // $('#D110').html(d110+'.0');
+        // else
+        $('#D110').html(d110.toFixed(1));
 
-        var b111 = parseFloat($('#B109').html()) - parseFloat($('#B110').html());
-        if(b111%1==0)
-        $('#B111').html(b111+'.0');
-        else $('#B111').html(b111);
+        var b111 = (b109.toFixed(2)-b110.toFixed(2));
+        // if(b111%1==0)
+        // $('#B111').html(b111+'.0');
+        // else
+        $('#B111').html(b111.toFixed(1));
 
-        var d111 = parseFloat($('#D109').html()) - parseFloat($('#D110').html());
-        if(d111%1==0)
-        $('#D111').html(d111+'.0');
-        else $('#D111').html(d111);
+        var d111 = (d109.toFixed(2)-d110.toFixed(2));
+        // if(d111%1==0)
+        // $('#D111').html(d111+'.0');
+        // else
+        $('#D111').html(d111.toFixed(1));
+
+        var e89 = parseFloat($('#E88').html()) + parseFloat($('#D111').html());
+        // if(e89%1==0)
+        // $('#E89').html(e89+'.0');
+        // else
+        $('#E89').html(e89.toFixed(1));
+
+        $('#E90').html($('#E89').html());
       });
     </script>
   </body>
