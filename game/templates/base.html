@@ -35,10 +35,22 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ STATIC_URL }} /static/jquery-3.6.3.min.js"></script>
     <script type="text/javascript">
-      $(document).ready(function() {
+      function update() {
         // var secondCells = $('tr').find('td:eq(1)');
         // console.log(secondCells)
         //$('#D4').html($('#D81') != "" ? $('#D81') : 0.0);
+        if($('#E85').val())
+          e85 = parseFloat($('#E85').val());
+        else e85 = 0;
+
+        if($('#E84').val())
+          e84 = parseFloat($('#E84').val());
+        else e84 = 0;
+
+        if($('#D108').val())
+          d108 = parseFloat($('#D108').val());
+        else d108 = 0;
+
         var b79 = parseFloat($('#B75').html()) + parseFloat($('#B78').html());
         // if(b79%1==0)
         // $('#B79').html(b79+'.0');
@@ -54,7 +66,7 @@
         $('#B4').html($('#B81').html());
 
         //do the same for D81???
-        var d81 = (parseFloat($('#E84').html()) * parseFloat($('#D64').html().slice(0,-1)) + parseFloat($('#E85').html()) * parseFloat($('#D65').html().slice(0,-1)))/100;
+        var d81 = (e84 * parseFloat($('#D64').html().slice(0,-1)) + e85 * parseFloat($('#D65').html().slice(0,-1)))/100;
         // if(d81%1==0)
         // $('#D81').html(d81+'.0');
         // else
@@ -76,7 +88,7 @@
 
         $('#E88').html($('#C89').html());
 
-        var e91 = parseFloat($('#E88').html()) + parseFloat($('#E85').html()) + parseFloat($('#E84').html());
+        var e91 = parseFloat($('#E88').html()) + e85 + e84;
         // if(e91%1==0)
         // $('#E91').html(e91+'.0');
         // else
@@ -115,7 +127,7 @@
         // else
         $('#C96').html(c96.toFixed(2)+'%');
 
-        var e96 = parseFloat($('#D77').html()) / parseFloat($('#E84').html()) * 100;
+        var e96 = parseFloat($('#D77').html()) / e84 * 100;
         // if(e96%1==0)
         // $('#E96').html(e96+'.00%');
         // else if(e96%0.1==0)
@@ -140,8 +152,8 @@
         // else
         $('#B101').html(b101.toFixed(1));
 
-        var b=parseFloat($('#E84').html()) * parseFloat($('#E51').html().slice(0,-1)),
-        c=parseFloat($('#E85').html()) * parseFloat($('#E54').html().slice(0,-1));
+        var b=e84 * parseFloat($('#E51').html().slice(0,-1)),
+        c= e85 * parseFloat($('#E54').html().slice(0,-1));
         var d101 =(b+c)/100;
         // if(d101%1==0)
         // $('#D101').html(d101+'.0');
@@ -296,7 +308,7 @@
         c=parseFloat($('#D105').html()),
         d=parseFloat($('#D106').html()),
         e=parseFloat($('#D107').html()),
-        f=parseFloat($('#D108').html());
+        f=d108;
         var d109 =(b+c-d-e+f);
         // if(d109%1==0)
         // $('#D109').html(d109+'.0');
@@ -322,6 +334,23 @@
         $('#E89').html(e89.toFixed(1));
 
         $('#E90').html($('#E89').html());
+      }
+
+      $(document).ready(function() {
+        update();
+      });
+
+      $('#E84').on('input', function() {
+        update();
+      });
+
+      $('#E85').on('input', function() {
+        console.log($('#E85').val());
+        update();
+      });
+
+      $('#D108').on('input', function() {
+        update();
       });
     </script>
   </body>

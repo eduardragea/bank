@@ -1,15 +1,24 @@
 from django import forms
 from django.core.validators import RegexValidator
-from .models import User, BankModel
+from .models import User, BankModel, YearModel
 
 class NewBankForm(forms.ModelForm):
-    """Form to create new club."""
+    """Form to create new bank."""
 
     class Meta:
         """Form options."""
 
         model = BankModel
         fields = ['name', 'fullName']
+
+class NewYearForm(forms.ModelForm):
+    """Form to create new year."""
+
+    class Meta:
+        """Form options."""
+
+        model = YearModel
+        fields = ['b5']
 
 class LogInForm(forms.Form):
     """Form enabling registered users to log in."""

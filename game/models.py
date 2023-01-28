@@ -60,3 +60,7 @@ class BankModel(models.Model):
     name = models.CharField(max_length=100, blank=False)
     fullName = models.CharField(max_length=100, blank=False)
     owner = models.ForeignKey(User,default=now, on_delete = models.CASCADE, related_name = 'owner')
+
+class YearModel(models.Model):
+    owner = models.ForeignKey(BankModel,default=now, on_delete = models.CASCADE, related_name = 'bank')
+    b5 = models.PositiveIntegerField(default=0, blank=False)

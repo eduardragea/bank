@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import BankModel, User
-from .forms import SignUpForm, LogInForm, NewBankForm
+from .forms import SignUpForm, LogInForm, NewBankForm, NewYearForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -37,6 +37,19 @@ def new_bank(request):
     else:
         form = NewBankForm()
     return render(request, 'new_bank.html', {'form': form})
+
+# @login_required
+# def new_year(request):
+#     user = request.user
+#     if request.method == 'POST':
+#         form = NewYearForm(request.POST)
+#         if form.is_valid():
+#             b5 = form.cleaned_data.get('b5')
+#             club = BankModel.objects.create(b5=b5, owner=user)
+#             return redirect('dashboard')
+#     else:
+#         form = NewYearForm()
+#     return render(request, 'new_bank.html', {'form': form})
 
 def log_out(request):
     logout(request)
