@@ -188,4 +188,9 @@ h3.profile-title {
 .asd {
   background: rgba(0, 0, 0, 0);
   border: none;
+  width: 70px;
+}
+
+.input {
+  width: 70px;
 }
