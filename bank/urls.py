@@ -25,5 +25,5 @@ urlpatterns = [
     path('log_in/', views.log_in, name='log_in'),
     path('log_out/', views.log_out, name='log_out'),
     path('dashboard/', views.dashboard, name='dashboard'),
-    # path('new_year/', views.new_year, name='new_year'),
+    path('new_year/', views.new_year, name='new_year'),
 ]

@@ -3,7 +3,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from django.utils.translation import gettext_lazy as _
-from .models import BankModel, User
+from .models import BankModel, User, YearModel
 
 
 @admin.register(User)
@@ -32,5 +32,13 @@ class BankModelAdmin(admin.ModelAdmin):
     """Configuration of the admin interface for ClubModel."""
 
     list_display = [
-        'id', 'name', 'owner'
+        'id', 'name', 'owner', 'b75','b76','b77','b78','b111','c84','c85','c89', 'b108', 'year'
+    ]
+
+@admin.register(YearModel)
+class YearModelAdmin(admin.ModelAdmin):
+    """Configuration of the admin interface for ClubModel."""
+
+    list_display = [
+        'd75','d76','d77','d78','d111','e84','e85','e89', 'd108', 'year', 'bank'
     ]

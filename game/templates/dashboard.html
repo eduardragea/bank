@@ -37,13 +37,15 @@
 </div>
 <div class="split right">
   {% if bank != None %}
+  <form method="post" action="{% url 'new_year' %}">
+    {% csrf_token %}
     <table>
       <thead>
         <th>Banking Wars</th>
         <th colspan="2">Year 0</th>
         <th colspan="2">Year 1</th>
           <span class="float-end">
-            <a href="{% url 'new_bank' %}" class="btn btn-primary">Next Year</a>
+            <input class="btn btn-primary" value="Next Year" type="submit">
           </span>
       </thead>
       <tbody>
@@ -58,14 +60,14 @@
           <td>Required reserves</td>
           <td id="B4">9.0</td>
           <td></td>
-          <td id="D4">0.0</td>
+          <td id="D4"></td>
           <td></td>
         </tr>
         <tr>
           <td>Free reserves</td>
           <td id="B5">81.0</td>
           <td></td>
-          <td id="D5">90.0</td>
+          <td id="D5"></td>
           <td></td>
         </tr>
         <tr>
@@ -276,28 +278,28 @@
           <td>Cash reserves</td>
           <td id="B75">90.0</td>
           <td></td>
-          <td id="D75">90.0</td>
+          <td><input id="D75" class="asd" name="d75" value="90.0" readonly="true"></td>
           <td></td>
         </tr>
         <tr>
           <td>Interbank loans</td>
           <td id="B76">0.0</td>
           <td></td>
-          <td id="D76">0.0</td>
+          <td><input id="D76" class="asd" name="d76" value="90.0" readonly="true"></td>
           <td></td>
         </tr>
         <tr>
           <td>Mortgages</td>
           <td id="B77">0.0</td>
           <td></td>
-          <td id="D77">0.0</td>
+          <td><input id="D77" class="asd" name="d77" value="90.0" readonly="true"></td>
           <td></td>
         </tr>
         <tr>
           <td>Non-financial assets</td>
           <td id="B78">10.0</td>
           <td></td>
-          <td id="D78">10.0</td>
+          <td><input id="D78" class="asd" name="d78" value="90.0" readonly="true"></td>
           <td></td>
         </tr>
         <tr>
@@ -354,7 +356,7 @@
           <td></td>
           <td id="C89">10.0</td>
           <td></td>
-          <td id="E89">10.2</td>
+          <td><input id="E89" class="asd" name="e89" value="90.0" readonly="true"></td>
         </tr>
         <tr>
           <td>Shareholders</td>
@@ -473,11 +475,12 @@
           <td>Net income</td>
           <td id="B111">0.2</td>
           <td></td>
-          <td id="D111">0.2</td>
+          <td><input id="D111" class="asd" name="d111" value="90.0" readonly="true"></td>
           <td></td>
         </tr>
       </tbody>
     </table>
+  </form>
   {% else %}
     <div class="row h-100 container text-center">
       <div class="col-sm-12 my-auto">Please create a bank to start the game

@@ -18,7 +18,7 @@ class NewYearForm(forms.ModelForm):
         """Form options."""
 
         model = YearModel
-        fields = ['b5']
+        fields = ['d75','d76','d77','d78','d111','e89']
 
 class LogInForm(forms.Form):
     """Form enabling registered users to log in."""
