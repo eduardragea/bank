@@ -32,7 +32,7 @@ def new_bank(request):
         if form.is_valid():
             name = form.cleaned_data.get('name')
             fullName = form.cleaned_data.get('fullName')
-            club = BankModel.objects.create(name=name, fullName=fullName, owner=user,b75=90.0, b76=0.0, b77=0.0, b78=10.0, b111=0.2, c89=10.0, c85=0.0, c84=90.0, b108=0.0, year=0)
+            club = BankModel.objects.create(name=name, fullName=fullName, owner=user,b75=90.0, b76=0.0, b77=0.0, b78=10.0, b111=0.2, c89=10.2, c85=0.0, c84=90.0, b108=0.0, year=0)
             return redirect('dashboard')
     else:
         form = NewBankForm()

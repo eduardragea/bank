@@ -11,7 +11,9 @@
             <td><h1>Banks</h1></td>
             <td class="align-middle">
               <span class="float-end">
+                {% if bank == None %}
                 <a href="{% url 'new_bank' %}" class="btn btn-primary">Create Bank</a>
+                {% endif %}
                 <a class="dropdown-item" href="{% url 'log_out' %}">Log out</a>
               </span>
             </td>
@@ -37,20 +39,25 @@
 </div>
 <div class="split right">
   {% if bank != None %}
+  {% if bank.year < 6 %}
   <form method="post" action="{% url 'new_year' %}">
     {% csrf_token %}
     <table>
       <thead>
         <th>Banking Wars</th>
-        <th colspan="2">Year 0</th>
-        <th colspan="2">Year 1</th>
+        <th colspan="2" id="currentYear">Year {{ bank.year }}</th>
+        <th colspan="2" id="nextYear">Year </th>
           <span class="float-end">
+            {% if bank.year == 5 %}
+            <input class="btn btn-primary" value="Finish" type="submit">
+            {% else %}
             <input class="btn btn-primary" value="Next Year" type="submit">
+            {% endif %}
           </span>
       </thead>
       <tbody>
         <tr>
-          <td>Bank Name</td>
+          <th>{{ bank.name }}</th>
           <td>Assets</td>
           <td>Liabilities</td>
           <td>Assets</td>
@@ -263,9 +270,9 @@
           <td id="D71">25.00%</td>
         </tr>
         <tr>
-          <th>Bank Name</th>
-          <th colspan="2">Year 0</th>
-          <th colspan="2">Year 1</th>
+          <th>{{ bank.name }}</th>
+          <th colspan="2">Year {{ bank.year }}</th>
+          <th colspan="2" id="nextYear2">Year </th>
         </tr>
         <tr>
           <th>Balance Sheet</th>
@@ -276,28 +283,28 @@
         </tr>
         <tr>
           <td>Cash reserves</td>
-          <td id="B75">90.0</td>
+          <td id="B75">{{ bank.b75 }}</td>
           <td></td>
-          <td><input id="D75" class="asd" name="d75" value="90.0" readonly="true"></td>
+          <td><input id="D75" name="d75" value="90.0"></td>
           <td></td>
         </tr>
         <tr>
           <td>Interbank loans</td>
-          <td id="B76">0.0</td>
+          <td id="B76">{{ bank.b76 }}</td>
           <td></td>
-          <td><input id="D76" class="asd" name="d76" value="90.0" readonly="true"></td>
+          <td><input id="D76" name="d76" value="90.0"></td>
           <td></td>
         </tr>
         <tr>
           <td>Mortgages</td>
-          <td id="B77">0.0</td>
+          <td id="B77">{{ bank.b77 }}</td>
           <td></td>
-          <td><input id="D77" class="asd" name="d77" value="90.0" readonly="true"></td>
+          <td><input id="D77" name="d77" value="90.0"></td>
           <td></td>
         </tr>
         <tr>
           <td>Non-financial assets</td>
-          <td id="B78">10.0</td>
+          <td id="B78">{{ bank.b78 }}</td>
           <td></td>
           <td><input id="D78" class="asd" name="d78" value="90.0" readonly="true"></td>
           <td></td>
@@ -326,24 +333,26 @@
         <tr>
           <td>Deposits</td>
           <td></td>
-          <td id="C84">90.0</td>
+          <td id="C84">{{ bank.c84 }}</td>
           <td></td>
           <td><input id="E84" name="E84" value="90.0"></td>
         </tr>
         <tr>
           <td>Interbank loans</td>
           <td></td>
-          <td id="C85">0.0</td>
+          <td id="C85">{{ bank.c85 }}</td>
           <td></td>
-          <td><input id="E85" name="E85" value="0"></td>
+          <td><input id="E85" name="E85" value="0.0"></td>
         </tr>
         <tr>
-          <td>Capital</td>
+          <th>Capital</th>
         </tr>
+        {% if bank.year == 0 %}
         <tr>
           <td>Initial endowment</td>
           <td id="B87">10.0</td>
         </tr>
+        {% endif %}
         <tr>
           <td>Start of year</td>
           <td></td>
@@ -354,14 +363,14 @@
         <tr>
           <td>End of year</td>
           <td></td>
-          <td id="C89">10.0</td>
+          <td id="C89">{{ bank.c89 }}</td>
           <td></td>
           <td><input id="E89" class="asd" name="e89" value="90.0" readonly="true"></td>
         </tr>
         <tr>
           <td>Shareholders</td>
           <td></td>
-          <td id="C90">10.0</td>
+          <td id="C90">{{ bank.c89 }}</td>
           <td></td>
           <td id="E90">10.2</td>
         </tr>
@@ -395,8 +404,8 @@
         </tr>
         <tr>
           <th>Bank Name</th>
-          <th colspan="2">Year 0</th>
-          <th colspan="2">Year 1</th>
+          <th colspan="2">Year {{ bank.year }}</th>
+          <th colspan="2" id="nextYear3">Year </th>
         </tr>
         <tr>
           <th>Income statement</th>
@@ -452,9 +461,9 @@
         </tr>
         <tr>
           <td>Other income/(expense)</td>
-          <td id="B108">0.0</td>
+          <td id="B108">{{ bank.b108 }}</td>
           <td></td>
-          <td><input id="D108" name="D108" value="0"></td>
+          <td><input id="D108" name="D108" value="0.0"></td>
           <td></td>
         </tr>
         <tr>
@@ -473,7 +482,7 @@
         </tr>
         <tr>
           <td>Net income</td>
-          <td id="B111">0.2</td>
+          <td id="B111">{{ bank.b111 }}</td>
           <td></td>
           <td><input id="D111" class="asd" name="d111" value="90.0" readonly="true"></td>
           <td></td>
@@ -481,6 +490,12 @@
       </tbody>
     </table>
   </form>
+  {% else %}
+    <div class="row h-100 container text-center">
+      <div class="col-sm-12 my-auto">Congrats you finished the game!
+      </div>
+    </div>
+  {% endif %}
   {% else %}
     <div class="row h-100 container text-center">
       <div class="col-sm-12 my-auto">Please create a bank to start the game

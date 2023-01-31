@@ -35,7 +35,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ STATIC_URL }} /static/jquery-3.6.3.min.js"></script>
     <script type="text/javascript">
-      function update() {
+      function update(isUpdate) {
         // var secondCells = $('tr').find('td:eq(1)');
         // console.log(secondCells)
         //$('#D4').html($('#D81') != "" ? $('#D81') : 0.0);
@@ -50,6 +50,21 @@
         if($('#D108').val())
           d108 = parseFloat($('#D108').val());
         else d108 = 0;
+
+        if($('#D75').val())
+          d75 = parseFloat($('#D75').val());
+        else d75 = 0;
+
+        if($('#D76').val())
+          d76 = parseFloat($('#D76').val());
+        else d76 = 0;
+
+        if($('#D77').val())
+          d77 = parseFloat($('#D77').val());
+        else d77 = 0;
+
+        var c88 = parseFloat($('#C89').html()) - parseFloat($('#B111').html());
+        $('#C88').html(c88.toFixed(1));
 
         var b79 = parseFloat($('#B75').html()) + parseFloat($('#B78').html());
         // if(b79%1==0)
@@ -82,8 +97,12 @@
 
         $('#B5').html($('#B82').html());
 
-        $('#D76').val($('#B76').html());
-        $('#D77').val($('#B77').html());
+        if(!isUpdate) {
+          $('#D76').val($('#B76').html());
+        }
+        if(!isUpdate) {
+          $('#D77').val($('#B77').html());
+        }
         $('#D78').val($('#B78').html());
 
         $('#E88').html($('#C89').html());
@@ -127,7 +146,7 @@
         // else
         $('#C96').html(c96.toFixed(2)+'%');
 
-        var e96 = parseFloat($('#D77').val()) / e84 * 100;
+        var e96 = d77 / e84 * 100;
         // if(e96%1==0)
         // $('#E96').html(e96+'.00%');
         // else if(e96%0.1==0)
@@ -221,13 +240,15 @@
         // else
         $('#B111').html(b111.toFixed(1));
 
-        var d75 = parseFloat($('#B75').html()) + b111;
-        // if(d75%1==0)
-        // $('#D75').val(d75+'.0');
-        // else
-        $('#D75').val(d75.toFixed(1));
+        if(!isUpdate) {
+          var d75 = parseFloat($('#B75').html()) + b111;
+          // if(d75%1==0)
+          // $('#D75').val(d75+'.0');
+          // else
+          $('#D75').val(d75.toFixed(1));
+        }
 
-        var d79 = parseFloat($('#D75').val()) + parseFloat($('#D78').val());
+        var d79 = d75 + parseFloat($('#D78').val());
         // if(d79%1==0)
         // $('#D79').html(d79+'.0');
         // else
@@ -245,7 +266,7 @@
         // else
         $('#D106').html(d106);
 
-        var d82 = parseFloat($('#D75').val()) - parseFloat($('#D81').html());
+        var d82 = d75 - parseFloat($('#D81').html());
         // if(d82%1==0)
         // $('#D82').html(d82+'.0');
         // else
@@ -254,9 +275,9 @@
         $('#D5').html($('#D82').html());
 
         var x=parseFloat($('#D79').html()) * parseFloat($('#D61').html().slice(0,-1)),
-        y=parseFloat($('#D75').val()) * parseFloat($('#D31').html().slice(0,-1)),
-        z=parseFloat($('#D76').val()) * parseFloat($('#D36').html().slice(0,-1)),
-        t=parseFloat($('#D77').val()) * parseFloat($('#D41').html().slice(0,-1));
+        y=d75 * parseFloat($('#D31').html().slice(0,-1)),
+        z=d76 * parseFloat($('#D36').html().slice(0,-1)),
+        t=d77 * parseFloat($('#D41').html().slice(0,-1));
         var e93 =(x + (y + z + t)/100*parseFloat($('#D62').html().slice(0,-1)))/100;
         // if(e93%1==0)
         // $('#E93').html(e93+'.0');
@@ -272,18 +293,18 @@
         $('#C6').html($('#C93').html());
         $('#E6').html($('#E93').html());
 
-        var b=parseFloat($('#D75').val()) * parseFloat($('#D32').html().slice(0,-1)),
-        c=parseFloat($('#D76').val()) * parseFloat($('#D37').html().slice(0,-1)),
-        d=parseFloat($('#D77').val()) * parseFloat($('#D42').html().slice(0,-1));
+        var b=d75 * parseFloat($('#D32').html().slice(0,-1)),
+        c=d76 * parseFloat($('#D37').html().slice(0,-1)),
+        d=d77 * parseFloat($('#D42').html().slice(0,-1));
         var d107 =((b+c+d)/100).toFixed(1);
         // if(d107%1==0)
         // $('#D107').html(d107+'.0');
         // else
         $('#D107').html(d107);
 
-        var b=parseFloat($('#D75').val()) * parseFloat($('#D30').html().slice(0,-1)),
-        c=parseFloat($('#D76').val()) * parseFloat($('#D35').html().slice(0,-1)),
-        d=parseFloat($('#D77').val()) * parseFloat($('#D40').html().slice(0,-1));
+        var b=d75 * parseFloat($('#D30').html().slice(0,-1)),
+        c=d76 * parseFloat($('#D35').html().slice(0,-1)),
+        d=d77 * parseFloat($('#D40').html().slice(0,-1));
         var d100 =(b+c+d)/100;
         // if(d100%1==0)
         // $('#D100').html(d100+'.0');
@@ -337,20 +358,34 @@
       }
 
       $(document).ready(function() {
-        update();
+        $('#nextYear').html('Year ' + (parseInt($('#currentYear').html().slice(-1)) + 1));
+        $('#nextYear2').html($('#nextYear').html());
+        $('#nextYear3').html($('#nextYear').html());
+        update(false);
       });
 
       $('#E84').on('input', function() {
-        update();
+        update(true);
       });
 
       $('#E85').on('input', function() {
-        console.log($('#E85').val());
-        update();
+        update(true);
       });
 
       $('#D108').on('input', function() {
-        update();
+        update(true);
+      });
+
+      $('#D75').on('input', function() {
+        update(true);
+      });
+
+      $('#D76').on('input', function() {
+        update(true);
+      });
+
+      $('#D77').on('input', function() {
+        update(true);
       });
     </script>
   </body>
