@@ -240,7 +240,7 @@
         // else
         $('#B111').html(b111.toFixed(1));
 
-        if(!isUpdate) {
+        if(!isUpdate && $('#D75').val()==90) {
           var d75 = parseFloat($('#B75').html()) + b111;
           // if(d75%1==0)
           // $('#D75').val(d75+'.0');

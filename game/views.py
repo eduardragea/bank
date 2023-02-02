@@ -22,7 +22,13 @@ def dashboard(request):
         if b.owner == user:
             bank = b
             break
-    return render(request, 'dashboard.html', {'banks': banks, 'current_user': user, 'bank': bank})
+    previousYear = None
+    if bank != None:
+        list = YearModel.objects.filter(bank=bank, year=bank.year+1)
+        if len(list) > 0:
+            previousYear = list[0]
+            # YearModel.objects.filter(bank=bank, year=bank.year+1).delete()
+    return render(request, 'dashboard.html', {'banks': banks, 'current_user': user, 'bank': bank, 'prev': previousYear})
 
 @login_required
 def new_bank(request):
@@ -32,7 +38,8 @@ def new_bank(request):
         if form.is_valid():
             name = form.cleaned_data.get('name')
             fullName = form.cleaned_data.get('fullName')
-            club = BankModel.objects.create(name=name, fullName=fullName, owner=user,b75=90.0, b76=0.0, b77=0.0, b78=10.0, b111=0.2, c89=10.2, c85=0.0, c84=90.0, b108=0.0, year=0)
+            bank = BankModel.objects.create(name=name, fullName=fullName, owner=user,b75=90.0, b76=0.0, b77=0.0, b78=10.0, b111=0.2, c89=10.2, c85=0.0, c84=90.0, b108=0.0, year=0)
+            year = YearModel.objects.create(d75=90.0, d76=0.0, d77=0.0, d78=10.0, d111=0.2, e89=10.2, e85=0.0, e84=90.0, d108=0.0, year=0, bank=bank)
             return redirect('dashboard')
     else:
         form = NewBankForm()
@@ -62,12 +69,24 @@ def new_year(request):
     e85 = request.POST.get('E85')
     d108 = request.POST.get('D108')
     newYear = bank.year+1
-    year = YearModel.objects.create(d75=d75, d76=d76, d77=d77, d78=d78, d111=d111, e89=e89, e85=e85, e84=e84, d108=d108, year=newYear,bank=bank)
+    if len(YearModel.objects.filter(bank=bank,year=newYear)) > 0:
+        year = YearModel.objects.filter(bank=bank, year=newYear).update(d75=d75, d76=d76, d77=d77, d78=d78, d111=d111, e89=e89, e85=e85, e84=e84, d108=d108, year=newYear,bank=bank)
+    else:
+        year = YearModel.objects.create(d75=d75, d76=d76, d77=d77, d78=d78, d111=d111, e89=e89, e85=e85, e84=e84, d108=d108, year=newYear,bank=bank)
     BankModel.objects.filter(owner=user).update(b75=d75, b76=d76, b77=d77, b78=d78, b111=d111, c89=e89, c85=e85, c84=e84, b108=d108, year=newYear)
     # return redirect('dashboard')
     # else:
     #     form = NewYearForm()
     # return render(request, 'new_bank.html', {'form': form})
+    return redirect('dashboard')
+
+@login_required
+def previous_year(request):
+    user = request.user
+    bank = BankModel.objects.get(owner=user)
+    newYear = bank.year-1
+    year = YearModel.objects.filter(bank=bank,year=newYear)[0]
+    BankModel.objects.filter(owner=user).update(b75=year.d75, b76=year.d76, b77=year.d77, b78=year.d78, b111=year.d111, c89=year.e89, c85=year.e85, c84=year.e84, b108=year.d108, year=newYear)
     return redirect('dashboard')
 
 def log_out(request):

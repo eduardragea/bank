@@ -48,6 +48,9 @@
         <th colspan="2" id="currentYear">Year {{ bank.year }}</th>
         <th colspan="2" id="nextYear">Year </th>
           <span class="float-end">
+            {% if bank.year > 0 %}
+            <a href="{% url 'previous_year' %}" class="btn btn-primary">Previous Year</a>
+            {% endif %}
             {% if bank.year == 5 %}
             <input class="btn btn-primary" value="Finish" type="submit">
             {% else %}
@@ -285,7 +288,11 @@
           <td>Cash reserves</td>
           <td id="B75">{{ bank.b75 }}</td>
           <td></td>
+          {% if prev != None %}
+          <td><input id="D75" name="d75" value="{{ prev.d75 }}" class="input"></td>
+          {% else %}
           <td><input id="D75" name="d75" value="90.0" class="input"></td>
+          {% endif %}
           <td></td>
         </tr>
         <tr>
