@@ -299,14 +299,22 @@
           <td>Interbank loans</td>
           <td id="B76">{{ bank.b76 }}</td>
           <td></td>
+          {% if prev != None %}
+          <td><input id="D76" name="d76" value="{{ prev.d76 }}" class="input"></td>
+          {% else %}
           <td><input id="D76" name="d76" value="90.0" class="input"></td>
+          {% endif %}
           <td></td>
         </tr>
         <tr>
           <td>Mortgages</td>
           <td id="B77">{{ bank.b77 }}</td>
           <td></td>
+          {% if prev != None %}
+          <td><input id="D77" name="d77" value="{{ prev.d77 }}" class="input"></td>
+          {% else %}
           <td><input id="D77" name="d77" value="90.0" class="input"></td>
+          {% endif %}
           <td></td>
         </tr>
         <tr>
@@ -342,14 +350,22 @@
           <td></td>
           <td id="C84">{{ bank.c84 }}</td>
           <td></td>
-          <td><input id="E84" name="E84" value="90.0" class="input"></td>
+          {% if prev != None %}
+          <td><input id="E84" name="e84" value="{{ prev.e84 }}" class="input"></td>
+          {% else %}
+          <td><input id="E84" name="e84" value="90.0" class="input"></td>
+          {% endif %}
         </tr>
         <tr>
           <td>Interbank loans</td>
           <td></td>
           <td id="C85">{{ bank.c85 }}</td>
           <td></td>
-          <td><input id="E85" name="E85" value="0.0" class="input"></td>
+          {% if prev != None %}
+          <td><input id="E85" name="e85" value="{{ prev.e85 }}" class="input"></td>
+          {% else %}
+          <td><input id="E85" name="e85" value="0.0" class="input"></td>
+          {% endif %}
         </tr>
         <tr>
           <th>Capital</th>
@@ -470,7 +486,11 @@
           <td>Other income/(expense)</td>
           <td id="B108">{{ bank.b108 }}</td>
           <td></td>
-          <td><input id="D108" name="D108" value="0.0" class="input"></td>
+          {% if prev != None %}
+          <td><input id="D108" name="d108" value="{{ prev.d108 }}" class="input"></td>
+          {% else %}
+          <td><input id="D108" name="d108" value="0.0" class="input"></td>
+          {% endif %}
           <td></td>
         </tr>
         <tr>

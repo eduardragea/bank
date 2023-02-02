@@ -97,10 +97,10 @@
 
         $('#B5').html($('#B82').html());
 
-        if(!isUpdate) {
+        if(!isUpdate && $('#D76').val()==90) {
           $('#D76').val($('#B76').html());
         }
-        if(!isUpdate) {
+        if(!isUpdate && $('#D77').val()==90) {
           $('#D77').val($('#B77').html());
         }
         $('#D78').val($('#B78').html());
@@ -317,7 +317,7 @@
         // else
         $('#D102').html(d102);
 
-        var d103 = (parseFloat($('#B102').html()) / parseFloat($('#B79').html()) * 100).toFixed(2);
+        var d103 = (parseFloat($('#D102').html()) / parseFloat($('#D79').html()) * 100).toFixed(2);
         // if(d103%1==0)
         // $('#D103').html(d103+'.00%');
         // else if(d103%0.1==0)

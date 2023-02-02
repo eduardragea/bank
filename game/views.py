@@ -65,9 +65,9 @@ def new_year(request):
     d78 = request.POST.get('d78')
     d111 = request.POST.get('d111')
     e89 = request.POST.get('e89')
-    e84 = request.POST.get('E84')
-    e85 = request.POST.get('E85')
-    d108 = request.POST.get('D108')
+    e84 = request.POST.get('e84')
+    e85 = request.POST.get('e85')
+    d108 = request.POST.get('d108')
     newYear = bank.year+1
     if len(YearModel.objects.filter(bank=bank,year=newYear)) > 0:
         year = YearModel.objects.filter(bank=bank, year=newYear).update(d75=d75, d76=d76, d77=d77, d78=d78, d111=d111, e89=e89, e85=e85, e84=e84, d108=d108, year=newYear,bank=bank)
