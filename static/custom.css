@@ -185,6 +185,10 @@ h3.profile-title {
   width: 70px;
 }
 
+.emphasized {
+  font-style: italic;
+}
+
 .asset {
   color: green;
 }
