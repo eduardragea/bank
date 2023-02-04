@@ -185,6 +185,15 @@ h3.profile-title {
   width: 70px;
 }
 
+.asset {
+  color: green;
+}
+
+.liability {
+  color: purple;
+}
+
 .input {
+  color: red;
   width: 70px;
 }
