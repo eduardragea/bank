@@ -97,15 +97,18 @@
 
         $('#B5').html($('#B82').html());
 
-        if(!isUpdate && $('#D76').val()==90) {
+        if(!isUpdate && $('#D76').val()==0.0) {
           $('#D76').val($('#B76').html());
         }
-        if(!isUpdate && $('#D77').val()==90) {
+        if(!isUpdate && $('#D77').val()==0.0) {
           $('#D77').val($('#B77').html());
         }
         $('#D78').val($('#B78').html());
 
         $('#E88').html($('#C89').html());
+        if($('#overrideJVS').val()) {
+          $('#E88').html(10.0);
+        }
 
         var e91 = parseFloat($('#E88').html()) + e85 + e84;
         // if(e91%1==0)
@@ -240,7 +243,7 @@
         // else
         $('#B111').html(b111.toFixed(1));
 
-        if(!isUpdate && $('#D75').val()==90) {
+        if(!isUpdate && $('#D75').val()==89) {
           var d75 = parseFloat($('#B75').html()) + b111;
           // if(d75%1==0)
           // $('#D75').val(d75+'.0');

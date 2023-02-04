@@ -22,10 +22,16 @@
             <tr>
               <td class="align-middle">
                 <b>{{ bank.name }}</b>
+                {% if bank.year == 7 %}
+                <p>Finished</p>
+                {% else %}
+                <p>Year {{ bank.year }}</p>
+                {% endif %}
               </td>
               <td class="align-middle">
                 <span class="float-end">
                   <b>{{ bank.fullName }}</b>
+                  <p>{{ bank.c89 }}</p>
                 </span>
               </td>
             </tr>
@@ -39,19 +45,19 @@
 </div>
 <div class="split right">
   {% if bank != None %}
-  {% if bank.year < 6 %}
+  {% if bank.year < 7 %}
   <form method="post" action="{% url 'new_year' %}">
     {% csrf_token %}
     <table>
       <thead>
         <th>Banking Wars</th>
-        <th colspan="2" id="currentYear" hidden="true">Year {{ bank.year }}</th>
-        <th colspan="2" id="nextYear">Year </th>
+        <th colspan="2" id="currentYear">Year {{ bank.year }}</th>
+        <th colspan="2" id="nextYear" hidden="true">Year </th>
           <span class="float-end">
             {% if bank.year > 0 %}
             <a href="{% url 'previous_year' %}" class="btn btn-primary">Previous Year</a>
             {% endif %}
-            {% if bank.year == 5 %}
+            {% if bank.year == 6 %}
             <input class="btn btn-primary" value="Finish" type="submit">
             {% else %}
             <input class="btn btn-primary" value="Next Year" type="submit">
@@ -236,8 +242,8 @@
         </tr>
         <tr>
           <th>{{ bank.name }}</th>
-          <th colspan="2" hidden="true">Year {{ bank.year }}</th>
-          <th colspan="2" id="nextYear2">Year </th>
+          <th colspan="2">Year {{ bank.year }}</th>
+          <th colspan="2" id="nextYear2" hidden="true">Year </th>
           <td style="color:white">____________</td>
           <td>Interbank loans</td>
         </tr>
@@ -257,10 +263,12 @@
           <td>Cash reserves</td>
           <td id="B75" hidden="true">{{ bank.b75 }}</td>
           <td hidden="true"></td>
-          {% if prev != None %}
+          {% if bank.year == 0 %}
+          <td><input id="D75" name="d75" value="90.0" class="input asd" readonly="true"></td>
+          {% elif prev != None %}
           <td><input id="D75" name="d75" value="{{ prev.d75 }}" class="input"></td>
           {% else %}
-          <td><input id="D75" name="d75" value="90.0" class="input"></td>
+          <td><input id="D75" name="d75" value="89" class="input"></td>
           {% endif %}
           <td></td>
           <td style="color:white">____________</td>
@@ -273,10 +281,12 @@
           <td>Interbank loans</td>
           <td id="B76" hidden="true">{{ bank.b76 }}</td>
           <td hidden="true"></td>
-          {% if prev != None %}
+          {% if bank.year == 0 %}
+          <td><input id="D76" name="d76" value="0.0" class="input asd" readonly="true"></td>
+          {% elif prev != None %}
           <td><input id="D76" name="d76" value="{{ prev.d76 }}" class="input"></td>
           {% else %}
-          <td><input id="D76" name="d76" value="90.0" class="input"></td>
+          <td><input id="D76" name="d76" value="0.0" class="input"></td>
           {% endif %}
           <td></td>
           <td style="color:white">____________</td>
@@ -289,10 +299,12 @@
           <td>Mortgages</td>
           <td id="B77" hidden="true">{{ bank.b77 }}</td>
           <td hidden="true"></td>
-          {% if prev != None %}
+          {% if bank.year == 0 %}
+          <td><input id="D77" name="d77" value="0.0" class="input asd" readonly="true"></td>
+          {% elif prev != None %}
           <td><input id="D77" name="d77" value="{{ prev.d77 }}" class="input"></td>
           {% else %}
-          <td><input id="D77" name="d77" value="90.0" class="input"></td>
+          <td><input id="D77" name="d77" value="0.0" class="input"></td>
           {% endif %}
           <td></td>
           <td style="color:white">____________</td>
@@ -368,7 +380,9 @@
           <td hidden="true"></td>
           <td id="C84" hidden="true">{{ bank.c84 }}</td>
           <td></td>
-          {% if prev != None %}
+          {% if bank.year == 0 %}
+          <td><input id="E84" name="e84" value="90.0" class="input asd" readonly="true"></td>
+          {% elif prev != None %}
           <td><input id="E84" name="e84" value="{{ prev.e84 }}" class="input"></td>
           {% else %}
           <td><input id="E84" name="e84" value="90.0" class="input"></td>
@@ -384,7 +398,9 @@
           <td hidden="true"></td>
           <td id="C85" hidden="true">{{ bank.c85 }}</td>
           <td></td>
-          {% if prev != None %}
+          {% if bank.year == 0 %}
+          <td><input id="E85" name="e85" value="0.0" class="input asd" readonly="true"></td>
+          {% elif prev != None %}
           <td><input id="E85" name="e85" value="{{ prev.e85 }}" class="input"></td>
           {% else %}
           <td><input id="E85" name="e85" value="0.0" class="input"></td>
@@ -416,6 +432,9 @@
           <td hidden="true"></td>
           <td id="C88" hidden="true">10.0</td>
           <td></td>
+          {% if bank.year == 0 %}
+          <input hidden="true" id="overrideJVS" value="1"></input>
+          {% endif %}
           <td id="E88" class="liability">10.0</td>
           <td style="color:white">____________</td>
           <td class="emphasized">- Cost</td>
@@ -506,8 +525,8 @@
         </tr>
         <tr>
           <th>{{ bank.name }}</th>
-          <th colspan="2" hidden="true">Year {{ bank.year }}</th>
-          <th colspan="2" id="nextYear3">Year </th>
+          <th colspan="2">Year {{ bank.year }}</th>
+          <th colspan="2" id="nextYear3" hidden="true">Year </th>
           <td style="color:white">____________</td>
           <td class="emphasized">- Total assets %</td>
           <td id="B61" hidden="true">5.00%</td>
@@ -605,7 +624,9 @@
           <td>Other income/(expense)</td>
           <td id="B108" hidden="true">{{ bank.b108 }}</td>
           <td hidden="true"></td>
-          {% if prev != None %}
+          {% if bank.year == 0 %}
+          <td><input id="D108" name="d108" value="0.0" class="input asd" readonly="true"></td>
+          {% elif prev != None %}
           <td><input id="D108" name="d108" value="{{ prev.d108 }}" class="input"></td>
           {% else %}
           <td><input id="D108" name="d108" value="0.0" class="input"></td>
